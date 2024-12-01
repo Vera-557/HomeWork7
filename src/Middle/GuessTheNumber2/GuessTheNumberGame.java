@@ -12,12 +12,12 @@ import java.util.Scanner;
 public class GuessTheNumberGame {
     public static void main(String[] args) {
         Computer computer = new Computer();
-        Player player = new Player();
+
         computer.inviteNumber();
 
             Scanner scanner = new Scanner(System.in);//создали сканер для пользовательского ввода
 
-            System.out.println("Введите число от 1 до 10 у вас есть 3 попытки");
+            System.out.println("Введите число от 1 до 10");
             int realNumber = computer.inviteNumber();//получаем ответ от компьютера
             int answer = scanner.nextInt();//считываем ответ игрока
         while (answer != realNumber){
