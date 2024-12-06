@@ -1,18 +1,60 @@
 package Hard.Gallow;
 
-public class Hanged {
-   static private int countMiss = 0;
-    public void countFalse(){
-       countMiss ++;
-       printHanged();
-    }
-    public int getCountMiss(){
-        return countMiss;
+public class HangmanGame {
+    private String wordToGuess;
+    private char[] guessedLetters;
+    private int attemptsLeft;
+    private static final int MAX_ATTEMPTS = 3;
+
+    public HangmanGame(String wordToGuess) {
+        this.wordToGuess = wordToGuess.toLowerCase();
+        this.guessedLetters = new char[wordToGuess.length()];
+        this.attemptsLeft = MAX_ATTEMPTS;
     }
 
-    public void printHanged(){
-        switch (getCountMiss()){
-            case 1:
+    public boolean isGameWon() {
+        for (char letter : guessedLetters) {
+            if (letter == '\u0000') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isGameOver() {
+        return attemptsLeft <= 0 || isGameWon();
+    }
+
+    public void guessLetter(char letter) { //буквы угадал
+        letter = Character.toLowerCase(letter);
+        if (wordToGuess.indexOf(letter) != -1) {
+            for (int i = 0; i < wordToGuess.length(); i++) {
+                if (wordToGuess.charAt(i) == letter) {
+                    guessedLetters[i] = letter;
+                }
+            }
+        } else {
+            attemptsLeft--;
+            printHanged();
+        }
+    }
+
+    public String getCurrentProgress() {
+        StringBuilder progress = new StringBuilder();
+        for (char letter : guessedLetters) {
+            progress.append(letter == '\u0000' ? '*' : letter).append(' ');
+        }
+        return progress.toString().trim();
+    }
+
+    public int getAttemptsLeft() {
+
+        return attemptsLeft;
+    }
+
+    public void printHanged() {
+        switch (getAttemptsLeft()) {
+            case 2:
                 System.out.println("\n" +
                         "        ⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
@@ -23,7 +65,7 @@ public class Hanged {
                         "        ⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠉⡀⠀⠀⠀⠀⠀");
                 break;
-            case 2:
+            case 1:
                 System.out.println("        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
@@ -37,7 +79,7 @@ public class Hanged {
                         "        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⡇⠀⢂⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀⠀⠀⠀⠀⡐⠀⠀⠀⠃⠀⠀⢂⠀⠀⠀");
                 break;
-            case 3:
+            case 0:
                 System.out.println("        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
                         "        ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
@@ -59,4 +101,5 @@ public class Hanged {
                 break;
         }
     }
+
 }
