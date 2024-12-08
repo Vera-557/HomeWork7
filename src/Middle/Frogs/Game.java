@@ -17,7 +17,7 @@ public class Game {
         player2.setName(" ");
         System.out.println("Второй игрок " + player2.getName());
 
-        while (frog1.jumpСount < 30 || frog2.jumpСount < 30){
+        while (true){
             System.out.println(player1.getName() + frog1.throwBone());
             frog1.jump();
             System.out.println("summ " + frog1.getJumpСount());
