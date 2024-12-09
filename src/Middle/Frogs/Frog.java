@@ -27,8 +27,8 @@ public class Frog {
     }
 
     public boolean isWon(){
-        if (jumpСount >= 30) return false;
-        return true;
+        if (jumpСount >= 30) return true;
+        return false;
     }
 
 }

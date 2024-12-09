@@ -21,13 +21,13 @@ public class Game {
             System.out.println(player1.getName() + frog1.throwBone());
             frog1.jump();
             System.out.println("summ " + frog1.getJumpСount());
-            if (!frog1.isWon()) {
+            if (frog1.isWon()) {
                 System.out.println(player1.getName() + " выиграл");
                 break;
             } else System.out.println(player2.getName() + frog2.throwBone());
             frog2.jump();
             System.out.println("summ " + frog2.getJumpСount());
-            if (!frog2.isWon()) {
+            if (frog2.isWon()) {
                 System.out.println(player2.getName() + " выиграл");
                 break;
             }
