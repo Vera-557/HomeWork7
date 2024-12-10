@@ -7,7 +7,7 @@ package Middle.GameOfLuck;
  */
 public class Thimble {
     public int showNumberThimble() {
-        int number = (int) (Math.random() * 3);
+        int number = (int) (Math.random() * 2);
         //System.out.println(number);
         return number;
     }

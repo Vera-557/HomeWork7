@@ -1,7 +1,4 @@
 package Middle.RockPaperScissors;
-
-import Middle.GuessTheNumber1.Player;
-
 import java.util.Scanner;
 
 /*Написать игру “Камень-ножницы-бумага” Программа выбирает случайным образом число от 0 до 2. Под каждым номером
@@ -18,41 +15,10 @@ public class Game {
         System.out.println(" 0 - камень, 1 - ножницы, 2 - бумага");
         int computerNumber = computer.inviteNumber();
         int answer = new Scanner(System.in).nextInt();
+        if (answer == 0 && computerNumber == 1 || answer == 1 && computerNumber == 2 || answer == 2 && computerNumber == 0){
+            System.out.println("Вы победили!");
+        } else System.out.println("Вы проиграли!");
 
-        switch (answer){
-            case 0 :
-                if (computerNumber == 1) System.out.print("\nВы победили\n");
-                if (computerNumber == 2) System.out.print("\nВы проиграли\n");
-                System.out.print("\uD83D\uDC8E");
-                break;
-            case 1 :
-                if (computerNumber == 2) System.out.print("\nВы победили\n");
-                if (computerNumber == 0) System.out.print("\nВы проиграли\n");
-                System.out.print("✂\uFE0F");
-                break;
-            case 2 :
-                if (computerNumber == 0) System.out.print("\nВы победили\n");
-                if (computerNumber == 1) System.out.print("\nВы проиграли\n");
-                System.out.print("\uD83D\uDCC4");
-                break;
-        }
-        System.out.print("   ⚔\uFE0F   ");
-
-        switch (computerNumber){
-            case 0 :
-                System.out.print("\uD83D\uDC8E");
-                break;
-            case 1 :
-                System.out.print("✂\uFE0F");
-                break;
-            case 2 :
-                System.out.print("\uD83D\uDCC4");
-                break;
-        }
-
-       if (answer == computerNumber){
-           System.out.println("\nНичья");
-       }
 
     }
 
