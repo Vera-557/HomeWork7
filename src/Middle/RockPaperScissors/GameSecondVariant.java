@@ -3,17 +3,28 @@ package Middle.RockPaperScissors;
 import java.util.Scanner;
 
 public class GameSecondVariant {
-
+    static int computerNumber;
+    static int answer;
 
     public static void main(String[] args) {
         Computer computer = new Computer();
 
         System.out.println("Камень - Ножницы - Бумага?");
         System.out.println(" 0 - камень, 1 - ножницы, 2 - бумага");
-        int computerNumber = computer.inviteNumber();
-        int answer = new Scanner(System.in).nextInt();
+        computerNumber = computer.inviteNumber();
 
+        userAnswer();
+        System.out.print("   ⚔\uFE0F   ");
+        computerAnswer();
 
+        if (answer == computerNumber) {
+            System.out.println("\nНичья");
+        }
+
+    }
+
+    protected static void userAnswer() {
+        answer = new Scanner(System.in).nextInt();
         switch (answer) {
             case 0:
                 if (computerNumber == 1) System.out.print("\nВы победили\n");
@@ -30,26 +41,21 @@ public class GameSecondVariant {
                 if (computerNumber == 1) System.out.print("\nВы проиграли\n");
                 System.out.print("\uD83D\uDCC4");
                 break;
-        }
-            System.out.print("   ⚔\uFE0F   ");
-
-            switch (computerNumber) {
-                case 0:
-                    System.out.print("\uD83D\uDC8E");
-                    break;
-                case 1:
-                    System.out.print("✂\uFE0F");
-                    break;
-                case 2:
-                    System.out.print("\uD83D\uDCC4");
-                    break;
-            }
-
-            if (answer == computerNumber) {
-                System.out.println("\nНичья");
-            }
 
         }
-
-
     }
+
+    protected static void computerAnswer() {
+        switch (computerNumber) {
+            case 0:
+                System.out.print("\uD83D\uDC8E");
+                break;
+            case 1:
+                System.out.print("✂\uFE0F");
+                break;
+            case 2:
+                System.out.print("\uD83D\uDCC4");
+                break;
+        }
+    }
+}
